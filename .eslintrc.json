@@ -1,0 +1,41 @@
+{
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  // Use the TypeScript parser
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+    // Allow for the use of imports
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    // Customize rules here, if needed
+    "no-console": "warn",
+    // Warn about console logs
+    "semi": [
+      "error",
+      "always"
+    ],
+    // Enforce semicolons at the end of statements
+    "quotes": [
+      "error",
+      "single"
+    ],
+    // Enforce single quotes for strings
+    "no-unused-vars": "warn",
+    // Warn about unused variables
+    "strict": "error"
+    // Enforce strict mode in JavaScript
+  }
+}
