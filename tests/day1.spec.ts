@@ -1,4 +1,4 @@
-import { formatData, similarityScore, sumDistanceValues } from "../src/day1/day1";
+import { formatData, similarityScore, sumDistanceValues } from "../src/day1";
 
 test("day1.formatValues", () => {
   expect(formatData(['3   2'])).toStrictEqual([[3], [2]]);
