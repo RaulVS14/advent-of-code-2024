@@ -13,7 +13,7 @@ export const formatData = (data: string[]) => {
   })
   return [col1.sort(), col2.sort()];
 }
-export const sumDistanceValues = (data: number[][]) => {
+export const sumDistanceValues = (data: number[][]): number => {
   const first = data[0];
   const last = data[1];
   let sum = 0;
@@ -22,4 +22,16 @@ export const sumDistanceValues = (data: number[][]) => {
   }
   return sum;
 }
+export const similarityScore = (data: number[][]): number => {
+  const first = data[0];
+  const last = data[1];
+  let sum = 0;
+  for (let i = 0; i < first.length; i++) {
+    const currentElement = first[i];
+    const elementList = last.filter((el) => el === first[i]);
+    sum += currentElement * elementList.length;
+  }
+  return sum;
+}
 console.log(sumDistanceValues(formatData(readFile('data\\day1\\input.txt'))));
+console.log(similarityScore(formatData(readFile('data\\day1\\input.txt'))));
