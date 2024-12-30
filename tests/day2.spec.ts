@@ -1,6 +1,6 @@
 import { formatData, safeReports, safeReportsWithError } from "../src/day2";
 
-test("day1.formatValues", () => {
+test("day2.formatValues", () => {
   expect(formatData(['3 2 4'])).toStrictEqual([[3, 2, 4]]);
 });
 

@@ -13,7 +13,15 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "outDir": "./build",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
   },
-  "include": ["src"]
+  "tsc-alias": {
+    "verbose": false,
+    "resolveFullPaths": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
 }
