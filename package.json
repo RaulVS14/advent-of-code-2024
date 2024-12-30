@@ -8,7 +8,8 @@
     "lint": "eslint src/**/*.ts",
     "check": "npm run lint -- --fix && npm run test",
     "compile": "tsc",
-    "day1": "npm run compile &&  node .\\build\\day_1\\day1.js"
+    "day1": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day1\\day1.js",
+    "day2": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day2\\day2.js"
   },
   "type": "module",
   "repository": {

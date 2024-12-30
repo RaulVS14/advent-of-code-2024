@@ -33,5 +33,8 @@ export const similarityScore = (data: number[][]): number => {
   }
   return sum;
 }
-console.log(sumDistanceValues(formatData(readFile('data\\day1\\input.txt'))));
-console.log(similarityScore(formatData(readFile('data\\day1\\input.txt'))));
+
+if (process.env.MAIN) {
+  console.log(sumDistanceValues(formatData(readFile('data\\day1\\input.txt'))));
+  console.log(similarityScore(formatData(readFile('data\\day1\\input.txt'))));
+}
