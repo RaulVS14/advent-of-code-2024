@@ -1,8 +1,5 @@
-import fs from 'node:fs';
+import { readFile } from "../utils";
 
-const readFile = (file: string): string[] => {
-  return fs.readFileSync(file, 'utf8').toString().trim().split('\n');
-}
 export const formatData = (data: string[]) => {
   return data.map((line) => {
     return line.trim().split(' ').map(Number);
