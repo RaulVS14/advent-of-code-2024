@@ -51,7 +51,8 @@ export const addMultiplications = (data: number[][][]): number => {
 }
 
 if (process.env.MAIN) {
-  console.log("Results:");
-  console.log(addMultiplications(formatData(readFile('data\\day3\\input.txt'))));
-  console.log(addMultiplications(formatDataWithDont(readFile('data\\day3\\input.txt'))));
+  const fileContent = readFile('data\\day3\\input.txt');
+  console.log("Results for day 3:");
+  console.log("Part 1:", addMultiplications(formatData(fileContent)));
+  console.log("Part 2:", addMultiplications(formatDataWithDont(fileContent)));
 }

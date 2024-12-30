@@ -59,7 +59,8 @@ export const safeReportsWithError = (data: number[][], errorCount: number): numb
   return validReportsCount;
 }
 if (process.env.MAIN) {
-  console.log("Results:");
-  console.log(safeReports(formatData(readFile('data\\day2\\input.txt'))));
-  console.log(safeReportsWithError(formatData(readFile('data\\day2\\input.txt')), 1));
+  const fileContent = readFile('data\\day2\\input.txt');
+  console.log("Results for day 2:");
+  console.log("Part 1:", safeReports(formatData(fileContent)));
+  console.log("Part 2:", safeReportsWithError(formatData(fileContent), 1));
 }

@@ -44,7 +44,13 @@ function gitAdd(fileName: string) {
 createFolder(srcFolder);
 createFolder(dataFolder);
 const files: string[][] = [
-  [`${srcFolder}/day${day}.ts`, "import { readFile } from \"@/utils\";\nexport const formatData = (data: string[]) => {\n}"],
+  [`${srcFolder}/day${day}.ts`, "import { readFile } from \"@/utils\";\n\nexport const formatData = (data: string[]) => {\n}\n\n" +
+  "if (process.env.MAIN) {\n" +
+  `  const fileContent = readFile('data\\\\day${day}\\\\input.txt');\n` +
+  `  console.log("Results for day ${day}:");\n` +
+  "  console.log(\"Part 1:\");\n" +
+  "  console.log(\"Part 2:\");\n" +
+  "}"],
   [`${srcFolder}/index.ts`, `export * from "./day${day}"`],
   [`${dataFolder}/input.txt`, ""],
   [`${testsFolder}/day${day}.spec.ts`, `import { formatData } from "../src/day${day}";`],
