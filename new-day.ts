@@ -41,21 +41,49 @@ function gitAdd(fileName: string) {
   }
 }
 
-createFolder(srcFolder);
-createFolder(dataFolder);
-const files: string[][] = [
-  [`${srcFolder}/day${day}.ts`, "import { readFile } from \"@/utils\";\n\nexport const formatData = (data: string[]) => {\n}\n\n" +
-  "if (process.env.MAIN) {\n" +
-  `  const fileContent = readFile('data\\\\day${day}\\\\input.txt');\n` +
-  `  console.log("Results for day ${day}:");\n` +
-  "  console.log(\"Part 1:\", formatData(fileContent));\n" +
-  "  console.log(\"Part 2:\", formatData(fileContent));\n" +
-  "}"],
-  [`${srcFolder}/index.ts`, `export * from "./day${day}"`],
-  [`${dataFolder}/input.txt`, ""],
-  [`${testsFolder}/day${day}.spec.ts`, `import { formatData } from "../src/day${day}";`],
-]
-for (const file of files) {
-  createFile(file[0], file[1]);
-  gitAdd(file[0])
+function updatePackageScripts() {
+  const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+  const newScriptName = `day${day}`;
+  const newScriptCommand = `set \"MAIN=true\" && npm run compile &&  node .\\build\\day${day}\\day${day}.js`;
+
+  packageJson.scripts = packageJson.scripts || {};
+  packageJson.scripts[newScriptName] = newScriptCommand;
+
+  fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2), 'utf8');
+
+  console.log(`Script "${newScriptName}" added to package.json!`);
 }
+
+function main() {
+  // Create Day folder in source and data
+  createFolder(srcFolder);
+  createFolder(dataFolder);
+
+  const files: string[][] = [
+    [`${srcFolder}/day${day}.ts`, "import { readFile } from \"@/utils\";\n\nexport const formatData = (data: string[]) => {\n}\n\n" +
+    "if (process.env.MAIN) {\n" +
+    `  const fileContent = readFile('data\\\\day${day}\\\\input.txt');\n` +
+    `  console.log("Results for day ${day}:");\n` +
+    "  console.log(\"Part 1:\", formatData(fileContent));\n" +
+    "  console.log(\"Part 2:\", formatData(fileContent));\n" +
+    "}"],
+    [`${srcFolder}/index.ts`, `export * from "./day${day}"`],
+    [`${dataFolder}/input.txt`, ""],
+    [`${testsFolder}/day${day}.spec.ts`, `import { formatData } from "../src/day${day}";\n\n`+
+    `test(\"day${day}.formatData\", () => {\n` +
+    "    expect(formatData([])).toStrictEqual([])\n" +
+    "})"],
+  ]
+
+  // Add files to src/day<>, tests/ and data/day<> and to git for VCS tracking
+  for (const file of files) {
+    createFile(file[0], file[1]);
+    gitAdd(file[0])
+  }
+
+  // Add script step for day<> in package.json
+  updatePackageScripts();
+}
+
+main();
