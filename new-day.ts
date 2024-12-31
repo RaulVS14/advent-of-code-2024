@@ -48,8 +48,8 @@ const files: string[][] = [
   "if (process.env.MAIN) {\n" +
   `  const fileContent = readFile('data\\\\day${day}\\\\input.txt');\n` +
   `  console.log("Results for day ${day}:");\n` +
-  "  console.log(\"Part 1:\");\n" +
-  "  console.log(\"Part 2:\");\n" +
+  "  console.log(\"Part 1:\", formatData(fileContent));\n" +
+  "  console.log(\"Part 2:\", formatData(fileContent));\n" +
   "}"],
   [`${srcFolder}/index.ts`, `export * from "./day${day}"`],
   [`${dataFolder}/input.txt`, ""],

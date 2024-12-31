@@ -1,17 +1,18 @@
 {
   "name": "advent-of-code-2024",
   "version": "1.0.0",
-  "description": "",
+  "description": "Solutions to https://adventofcode.com/2024/",
   "main": "index.js",
   "scripts": {
-    "test": "%npm_config_day% && jest day%npm_config_day%.spec.ts || jest",
+    "test": "jest",
     "lint": "eslint src/**/*.ts",
     "check": "npm run lint -- --fix && npm run test",
     "compile": "tsc && tsc-alias",
     "new": "node --import=tsx new-day.ts",
     "day1": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day1\\day1.js",
     "day2": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day2\\day2.js",
-    "day3": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day3\\day3.js"
+    "day3": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day3\\day3.js",
+    "day4": "set \"MAIN=true\" && npm run compile &&  node .\\build\\day4\\day4.js"
   },
   "type": "module",
   "repository": {
@@ -19,7 +20,7 @@
     "url": "git+https://github.com/RaulVS14/advent-of-code-2024.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Raul Muser",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RaulVS14/advent-of-code-2024/issues"
