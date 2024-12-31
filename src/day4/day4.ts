@@ -7,7 +7,7 @@ const horizontalXMAS = (data: string[][], i: number, j: number) => {
     if ((j > data[i].length - 4)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i][j + 1],
         data[i][j + 2],
@@ -19,7 +19,7 @@ const reverseHorizontalXMAS = (data: string[][], i: number, j: number) => {
     if ((j - 3 < 0)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i][j - 1],
         data[i][j - 2],
@@ -31,7 +31,7 @@ const verticalXMAS = (data: string[][], i: number, j: number) => {
     if ((i > data.length - 4)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i + 1][j],
         data[i + 2][j],
@@ -43,7 +43,7 @@ const reverseVerticalXMAS = (data: string[][], i: number, j: number) => {
     if ((i - 3 < 0)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i - 1][j],
         data[i - 2][j],
@@ -55,7 +55,7 @@ const diagonalUpLeft = (data: string[][], i: number, j: number) => {
     if ((i - 3 < 0) || (j - 3 < 0)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i - 1][j - 1],
         data[i - 2][j - 2],
@@ -67,7 +67,7 @@ const diagonalBottomRight = (data: string[][], i: number, j: number) => {
     if ((i > data.length - 4) || (j > data[i].length - 4)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i + 1][j + 1],
         data[i + 2][j + 2],
@@ -79,7 +79,7 @@ const diagonalBottomLeft = (data: string[][], i: number, j: number) => {
     if ((i > data.length - 4) || (j - 3 < 0)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i + 1][j - 1],
         data[i + 2][j - 2],
@@ -91,7 +91,7 @@ const diagonalUpRight = (data: string[][], i: number, j: number) => {
     if ((i - 3 < 0) || (j > data[i].length - 4)) {
         return false;
     }
-    let word = [
+    const word = [
         data[i][j],
         data[i - 1][j + 1],
         data[i - 2][j + 2],
@@ -142,8 +142,8 @@ function isX_MAS(data: string[][], i: number, j: number) {
         return false;
     }
     const options =['MAS', 'SAM']
-    let diagonal_right_down = [data[i - 1][j - 1], data[i][j], data[i + 1][j + 1]];
-    let diagonal_left_down = [data[i - 1][j + 1], data[i][j], data[i + 1][j - 1]];
+    const diagonal_right_down = [data[i - 1][j - 1], data[i][j], data[i + 1][j + 1]];
+    const diagonal_left_down = [data[i - 1][j + 1], data[i][j], data[i + 1][j - 1]];
     return options.includes(diagonal_right_down.join('')) && options.includes(diagonal_left_down.join(''));
 }
 
